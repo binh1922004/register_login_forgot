@@ -2,6 +2,7 @@ package ball.service.impl;
 
 import ball.dao.impl.UserDaoImpl;
 import ball.models.UserModel;
+import ball.request.UserCreationRequest;
 import ball.service.IUserService;
 
 public class UserServiceImpl implements IUserService {
@@ -17,6 +18,14 @@ public class UserServiceImpl implements IUserService {
                 if (user != null && password.equals(user.getPassWord()))
                         return user;
                 return null;
+        }
+
+        @Override
+        public boolean createUser(UserCreationRequest request) {
+                if (userDao.existedUser(request.getUserName()))
+                        return false;
+
+                return userDao.createUser(request);
         }
 
         public static void main(String[] args) {

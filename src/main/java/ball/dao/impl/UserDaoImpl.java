@@ -3,13 +3,34 @@ package ball.dao.impl;
 import ball.config.DBConnectMySQL;
 import ball.dao.IUserDao;
 import ball.models.UserModel;
+import ball.request.UserCreationRequest;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
+import java.time.LocalDate;
 
 public class UserDaoImpl implements IUserDao {
+        @Override
+        public boolean createUser(UserCreationRequest request) {
+                String sql = "insert into users(username, users.password, fullname, email, avatar, roleid, phone, createddate) " +
+                        "values(?, ?, ?, ?, ?, ?, ?, ?)";
+                try{
+                        Connection conn = DBConnectMySQL.getDatabaseConnection();
+                        PreparedStatement ps =conn.prepareStatement(sql);
+                        ps.setString(1, request.getUserName());
+                        ps.setString(2, request.getPassWord());
+                        ps.setString(3, request.getFullName());
+                        ps.setString(4, request.getEmail());
+                        ps.setString(5, request.getAvatar());
+                        ps.setInt(6, request.getRoleid());
+                        ps.setString(7, request.getPhone());
+                        ps.setDate(8, Date.valueOf(request.getCreatedDate()));
+
+                        return ps.executeUpdate() > 0;
+                } catch (SQLException e) {
+                        throw new RuntimeException(e);
+                }
+        }
+
         @Override
         public UserModel findByUsername(String username) {
                 String sql = "select * from users where username = ?";
@@ -34,5 +55,30 @@ public class UserDaoImpl implements IUserDao {
                 } catch (SQLException e) {
                         throw new RuntimeException(e);
                 }
+        }
+
+        @Override
+        public boolean existedUser(String username) {
+                String sql = "select * from users where username = ?";
+                try{
+                        Connection conn = DBConnectMySQL.getDatabaseConnection();
+                        PreparedStatement ps = conn.prepareStatement(sql);
+                        ps.setString(1, username);
+                        ResultSet rs = ps.executeQuery();
+                        UserModel userModel = new UserModel();
+                        while (rs.next()){
+                                return true;
+                        }
+                } catch (SQLException e) {
+                        throw new RuntimeException(e);
+                }
+                return false;
+        }
+
+        public static void main(String[] args) {
+                UserCreationRequest userCreationRequest = new UserCreationRequest("binh2",
+                        "123", "ho vu thanh binh", "binh@gmail.com", "",
+                        2, "0909", LocalDate.now());
+                System.out.println(new UserDaoImpl().createUser(userCreationRequest));
         }
 }
