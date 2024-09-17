@@ -18,4 +18,8 @@ public class UserServiceImpl implements IUserService {
                         return user;
                 return null;
         }
+
+        public static void main(String[] args) {
+                System.out.println(new UserServiceImpl().login("binh", "123"));
+        }
 }

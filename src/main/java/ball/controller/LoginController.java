@@ -33,7 +33,7 @@ public class LoginController extends HttpServlet {
                 if (username.isEmpty() || pass.isEmpty()){
                         alertMSG = "Tai khoan hoac mat khau khong duoc rong";
                         req.setAttribute("alert", alertMSG);
-                        req.getRequestDispatcher("/index.jsp").forward(req, resp);
+                        req.getRequestDispatcher("/view/login.jsp").forward(req, resp);
                         return;
                 }
                 IUserService userService = new UserServiceImpl();
@@ -48,8 +48,8 @@ public class LoginController extends HttpServlet {
                 }
                 else{
                         alertMSG = "Tài khoản hoặc mật khẩu không đúng";
-                        req.setAttribute("alert", alertMSG);
-                        req.getRequestDispatcher("/index.jsp").forward(req, resp);
+                        req.setAttribute("alterMsg", alertMSG);
+                        req.getRequestDispatcher("/view/login.jsp").forward(req, resp);
                 }
         }
         private void saveRemeberMe(HttpServletResponse response, String
