@@ -14,7 +14,8 @@ import java.io.IOException;
 public class LoginController extends HttpServlet {
         @Override
         protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-                super.doGet(req, resp);
+//                super.doGet(req, resp);
+                req.getRequestDispatcher(Constant.LOGIN).forward(req, resp);
         }
 
         @Override
@@ -33,7 +34,7 @@ public class LoginController extends HttpServlet {
                 if (username.isEmpty() || pass.isEmpty()){
                         alertMSG = "Username or password is not empty";
                         req.setAttribute("alert", alertMSG);
-                        req.getRequestDispatcher("/view/login.jsp").forward(req, resp);
+                        req.getRequestDispatcher(Constant.LOGIN).forward(req, resp);
                         return;
                 }
                 IUserService userService = new UserServiceImpl();
@@ -49,7 +50,7 @@ public class LoginController extends HttpServlet {
                 else{
                         alertMSG = "Username or password is incorrect";
                         req.setAttribute("alert", alertMSG);
-                        req.getRequestDispatcher("/view/login.jsp").forward(req, resp);
+                        req.getRequestDispatcher(Constant.LOGIN).forward(req, resp);
                 }
         }
         private void saveRemeberMe(HttpServletResponse response, String

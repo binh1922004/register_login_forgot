@@ -53,7 +53,7 @@
                         <form action="/MVC/login" method="post">
                             <div class="row gy-3 gy-md-4 overflow-hidden">
                                 <div class="col-12">
-                                    <label for="email" class="form-label">Username <span class="text-danger">*</span></label>
+                                    <label for="username" class="form-label">Username <span class="text-danger">*</span></label>
                                     <input type="text" class="form-control" name="username" id="username" placeholder="name@example.com" required>
                                 </div>
                                 <div class="col-12">

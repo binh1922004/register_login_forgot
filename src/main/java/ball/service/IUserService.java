@@ -6,6 +6,7 @@ import ball.request.UserCreationRequest;
 public interface IUserService {
         UserModel findByUserName(String username);
         UserModel login(String username, String password);
+        boolean forgot(String username, String email);
         boolean createUser(UserCreationRequest request);
         boolean existedUser(String username);
         boolean existedEmail(String email);

@@ -21,6 +21,14 @@ public class UserServiceImpl implements IUserService {
         }
 
         @Override
+        public boolean forgot(String username, String email) {
+                UserModel user = this.findByUserName(username);
+                if (user == null)
+                        return false;
+                return user.getEmail() == email;
+        }
+
+        @Override
         public boolean createUser(UserCreationRequest request) {
                 return userDao.createUser(request);
         }
