@@ -22,13 +22,22 @@ public class UserServiceImpl implements IUserService {
 
         @Override
         public boolean createUser(UserCreationRequest request) {
-                if (userDao.existedUser(request.getUserName()))
-                        return false;
-
                 return userDao.createUser(request);
         }
 
-        public static void main(String[] args) {
-                System.out.println(new UserServiceImpl().login("binh", "123"));
+        @Override
+        public boolean existedUser(String username) {
+                return userDao.existedUser(username);
         }
+
+        @Override
+        public boolean existedEmail(String email) {
+                return userDao.existedEmail(email);
+        }
+
+        @Override
+        public boolean existedPhone(String phone) {
+                return userDao.existedPhone(phone);
+        }
+
 }

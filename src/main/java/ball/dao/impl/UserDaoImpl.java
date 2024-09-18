@@ -75,10 +75,43 @@ public class UserDaoImpl implements IUserDao {
                 return false;
         }
 
+        @Override
+        public boolean existedEmail(String email) {
+                String sql = "select * from users where email = ?";
+                try{
+                        Connection conn = DBConnectMySQL.getDatabaseConnection();
+                        PreparedStatement ps = conn.prepareStatement(sql);
+                        ps.setString(1, email);
+                        ResultSet rs = ps.executeQuery();
+                        UserModel userModel = new UserModel();
+                        while (rs.next()){
+                                return true;
+                        }
+                } catch (SQLException e) {
+                        throw new RuntimeException(e);
+                }
+                return false;
+        }
+
+        @Override
+        public boolean existedPhone(String phone) {
+                String sql = "select * from users where phone = ?";
+                try{
+                        Connection conn = DBConnectMySQL.getDatabaseConnection();
+                        PreparedStatement ps = conn.prepareStatement(sql);
+                        ps.setString(1, phone);
+                        ResultSet rs = ps.executeQuery();
+                        UserModel userModel = new UserModel();
+                        while (rs.next()){
+                                return true;
+                        }
+                } catch (SQLException e) {
+                        throw new RuntimeException(e);
+                }
+                return false;
+        }
+
         public static void main(String[] args) {
-                UserCreationRequest userCreationRequest = new UserCreationRequest("binh2",
-                        "123", "ho vu thanh binh", "binh@gmail.com", "",
-                        2, "0909", LocalDate.now());
-                System.out.println(new UserDaoImpl().createUser(userCreationRequest));
+                System.out.println(new UserDaoImpl().existedEmail("binh@gmail.com"));
         }
 }
