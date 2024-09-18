@@ -18,7 +18,7 @@ public class UserVerifyForgotController extends HttpServlet {
 
         @Override
         protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-                req.getRequestDispatcher(Constant.FORGOT).forward(req, resp);
+                req.getRequestDispatcher(Constant.FORGOT_USER).forward(req, resp);
         }
 
 
@@ -31,12 +31,12 @@ public class UserVerifyForgotController extends HttpServlet {
 
                 if (userService.existedUser(username)){
                         session.setAttribute("username", username);
-                        resp.sendRedirect(req.getContextPath() + "/recover");
+//                        resp.sendRedirect(req.getContextPath() + "/recover");
                 }
                 else{
                         alertMSG = "No search results";
                         req.setAttribute("alert", alertMSG);
-                        req.getRequestDispatcher(Constant.REGISTER).forward(req, resp);
+                        req.getRequestDispatcher(Constant.FORGOT_USER).forward(req, resp);
                 }
 
         }

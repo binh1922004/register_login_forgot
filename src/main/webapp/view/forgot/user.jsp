@@ -34,7 +34,7 @@
                                 </div>
                             </div>
                         </div>
-                        <form action="/MVC/register" method="post">
+                        <form action="/MVC/forgot/identify" method="post">
                             <div class="row gy-3 gy-md-4 overflow-hidden">
                                 <div class="col-12">
                                     <label for="username" class="form-label">Username <span class="text-danger">*</span></label>
@@ -43,7 +43,7 @@
 
                                 <div class="col-12">
                                     <div class="d-grid">
-                                        <button class="btn bsb-btn-xl btn-primary" type="submit">Register</button>
+                                        <button class="btn bsb-btn-xl btn-primary" type="submit">Find</button>
                                     </div>
                                 </div>
                             </div>
