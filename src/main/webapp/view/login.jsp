@@ -53,8 +53,8 @@
                         <form action="/MVC/login" method="post">
                             <div class="row gy-3 gy-md-4 overflow-hidden">
                                 <div class="col-12">
-                                    <label for="email" class="form-label">Account <span class="text-danger">*</span></label>
-                                    <input type="text" class="form-control" name="username" id="email" placeholder="name@example.com" required>
+                                    <label for="email" class="form-label">Username <span class="text-danger">*</span></label>
+                                    <input type="text" class="form-control" name="username" id="username" placeholder="name@example.com" required>
                                 </div>
                                 <div class="col-12">
                                     <label for="password" class="form-label">Password <span class="text-danger">*</span></label>
@@ -79,7 +79,7 @@
                             <div class="col-12">
                                 <hr class="mt-5 mb-4 border-secondary-subtle">
                                 <div class="d-flex gap-2 gap-md-4 flex-column flex-md-row justify-content-md-end">
-                                    <a href="#!" class="link-secondary text-decoration-none">Create new account</a>
+                                    <a href="<%=request.getContextPath()%>/register" class="link-secondary text-decoration-none">Create new account</a>
                                     <a href="#!" class="link-secondary text-decoration-none">Forgot password</a>
                                 </div>
                             </div>

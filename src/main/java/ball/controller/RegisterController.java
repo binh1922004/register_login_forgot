@@ -19,12 +19,17 @@ public class RegisterController extends HttpServlet {
         IUserService userService = new UserServiceImpl();
         @Override
         protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+                req.getRequestDispatcher(Constant.REGISTER).forward(req, resp);
+        }
+
+        @Override
+        protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
                 String username = req.getParameter("username");
                 String password = req.getParameter("password");
                 String fullname = req.getParameter("fullname");
                 String email = req.getParameter("email");
                 String avtar = "";
-                Integer roleid = 1;
+                Integer roleid = Integer.valueOf(req.getParameter("role"));
                 String phone = req.getParameter("phone");
                 LocalDate date = LocalDate.now();
 
@@ -58,11 +63,5 @@ public class RegisterController extends HttpServlet {
                         req.getRequestDispatcher(Constant.REGISTER).forward(req, resp);
                 }
 
-
-        }
-
-        @Override
-        protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-                doGet(req, resp);
         }
 }
