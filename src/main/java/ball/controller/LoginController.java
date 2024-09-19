@@ -12,10 +12,25 @@ import java.io.IOException;
 
 @WebServlet("/login")
 public class LoginController extends HttpServlet {
+        IUserService userService = new UserServiceImpl();
+
+
         @Override
         protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 //                super.doGet(req, resp);
-                req.getRequestDispatcher(Constant.LOGIN).forward(req, resp);
+                Cookie[] cookie = req.getCookies();
+                for (Cookie c: cookie) {
+                        boolean login = false;
+                        if (c.getName().equals("username")) {
+                                System.out.println(c.getName());
+                                login = true;
+                                resp.sendRedirect("/MVC/waiting");
+                        }
+                        if (!login) {
+                                req.getRequestDispatcher(Constant.LOGIN).forward(req, resp);
+                        }
+                        break;
+                }
         }
 
         @Override
@@ -25,6 +40,8 @@ public class LoginController extends HttpServlet {
                 String pass = req.getParameter("password");
 
                 String remember = req.getParameter("remember");
+
+
 
                 boolean isRemember = false;
                 if ("on".equals(remember))
@@ -37,12 +54,12 @@ public class LoginController extends HttpServlet {
                         req.getRequestDispatcher(Constant.LOGIN).forward(req, resp);
                         return;
                 }
-                IUserService userService = new UserServiceImpl();
                 UserModel user = userService.login(username, pass);
                 if (user != null){
                         HttpSession session = req.getSession(true);
                         session.setAttribute("account", user);
                         if (isRemember){
+                                System.out.println("save");
                                 saveRemeberMe(resp, username);
                         }
                         resp.sendRedirect(req.getContextPath() + "/waiting");
@@ -57,7 +74,7 @@ public class LoginController extends HttpServlet {
                 username){
                 Cookie cookie = new Cookie(Constant.COOKIE_REMEMBER,
                         username);
-                cookie.setMaxAge(60*30);
+                cookie.setMaxAge(60);
                 response.addCookie(cookie);
         }
 }
