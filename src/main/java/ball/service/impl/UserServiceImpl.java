@@ -21,12 +21,10 @@ public class UserServiceImpl implements IUserService {
         }
 
         @Override
-        public boolean forgot(String username, String email) {
-                UserModel user = this.findByUserName(username);
-                if (user == null)
-                        return false;
-                return user.getEmail() == email;
+        public void updatePassword(String username, String newpass) {
+                userDao.updatePassword(username, newpass);
         }
+
 
         @Override
         public boolean createUser(UserCreationRequest request) {

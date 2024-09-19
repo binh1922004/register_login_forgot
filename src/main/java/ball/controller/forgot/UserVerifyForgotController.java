@@ -1,5 +1,6 @@
 package ball.controller.forgot;
 
+import ball.models.UserModel;
 import ball.service.IUserService;
 import ball.service.impl.UserServiceImpl;
 import ball.ultils.Constant;
@@ -27,11 +28,12 @@ public class UserVerifyForgotController extends HttpServlet {
                 String username = req.getParameter("username");
                 String alertMSG = "";
 
-                HttpSession session = req.getSession(true);
-
-                if (userService.existedUser(username)){
+                UserModel userModel = userService.findByUserName(username);
+                if (userModel != null){
+                        HttpSession session = req.getSession(true);
                         session.setAttribute("username", username);
-//                        resp.sendRedirect(req.getContextPath() + "/recover");
+                        session.setAttribute("email", userModel.getEmail());
+                        resp.sendRedirect(req.getContextPath() + "/forgot/recover");
                 }
                 else{
                         alertMSG = "No search results";

@@ -30,11 +30,11 @@
                             <div class="col-12">
                                 <div class="mb-5">
                                     <h3 style="color: red">${alert}</h3>
-                                    <h3>Forgot password</h3>
+                                    <h3>Email verify</h3>
                                 </div>
                             </div>
                         </div>
-                        <form action="/MVC/register" method="post">
+                        <form action="/MVC/forgot/recover" method="post">
                             <div class="row gy-3 gy-md-4 overflow-hidden">
                                 <div class="col-12">
                                     <label for="email" class="form-label">Email <span class="text-danger">*</span></label>
@@ -52,7 +52,12 @@
                             <div class="col-12">
                                 <hr class="mt-5 mb-4 border-secondary-subtle">
                                 <div class="d-flex gap-2 gap-md-4 flex-column flex-md-row justify-content-md-end">
-                                    <a href="#!" class="link-secondary text-decoration-none">Back</a>
+                                    <a onclick="goBack()" href="#" class="link-secondary text-decoration-none">Back</a>
+                                    <script>
+                                        function goBack() {
+                                            window.history.back(); // Sử dụng hàm history.back() để quay lại trang trước đó
+                                        }
+                                    </script>
                                 </div>
                             </div>
                         </div>

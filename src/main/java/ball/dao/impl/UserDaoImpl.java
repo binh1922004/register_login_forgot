@@ -32,6 +32,22 @@ public class UserDaoImpl implements IUserDao {
         }
 
         @Override
+        public void updatePassword(String username, String password) {
+                String sql = "UPDATE `demo`.`users` SET password = ? WHERE (username = ?)";
+                try{
+                        Connection conn = DBConnectMySQL.getDatabaseConnection();
+                        PreparedStatement ps = conn.prepareStatement(sql);
+                        ps.setString(1, password);
+                        ps.setString(2, username);
+
+                        ps.executeUpdate();
+
+                } catch (SQLException e) {
+                        throw new RuntimeException(e);
+                }
+        }
+
+        @Override
         public UserModel findByUsername(String username) {
                 String sql = "select * from users where username = ?";
                 try{
