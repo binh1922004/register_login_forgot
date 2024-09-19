@@ -45,10 +45,6 @@
                                         <label>
                                             <input class="form-check-input" type="checkbox" checked = "checked" name="remember">
                                         </label> Remember me
-<%--                                        <input class="form-check-input" type="checkbox" checked="checked" value="" name="remember" id="remember">--%>
-<%--                                        <label class="form-check-label text-secondary" for="remember">--%>
-<%--                                            Keep me logged in--%>
-<%--                                        </label>--%>
                                     </div>
                                 </div>
                                 <div class="col-12">

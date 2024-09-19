@@ -19,17 +19,15 @@ public class LoginController extends HttpServlet {
         protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 //                super.doGet(req, resp);
                 Cookie[] cookie = req.getCookies();
+                boolean login = false;
                 for (Cookie c: cookie) {
-                        boolean login = false;
                         if (c.getName().equals("username")) {
-                                System.out.println(c.getName());
                                 login = true;
                                 resp.sendRedirect("/MVC/waiting");
                         }
-                        if (!login) {
-                                req.getRequestDispatcher(Constant.LOGIN).forward(req, resp);
-                        }
-                        break;
+                }
+                if (!login) {
+                        req.getRequestDispatcher(Constant.LOGIN).forward(req, resp);
                 }
         }
 
@@ -59,7 +57,6 @@ public class LoginController extends HttpServlet {
                         HttpSession session = req.getSession(true);
                         session.setAttribute("account", user);
                         if (isRemember){
-                                System.out.println("save");
                                 saveRemeberMe(resp, username);
                         }
                         resp.sendRedirect(req.getContextPath() + "/waiting");
@@ -74,7 +71,7 @@ public class LoginController extends HttpServlet {
                 username){
                 Cookie cookie = new Cookie(Constant.COOKIE_REMEMBER,
                         username);
-                cookie.setMaxAge(60);
+                cookie.setMaxAge(60*30);
                 response.addCookie(cookie);
         }
 }
