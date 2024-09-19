@@ -14,16 +14,6 @@ import java.io.IOException;
 public class AdminController extends HttpServlet {
         @Override
         protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-                Cookie[] cookie = req.getCookies();
-                for (Cookie c: cookie) {
-                        boolean login = false;
-                        if (c.getName().equals("username")) {
-                                login = true;
-                        }
-                        if (!login) {
-                                resp.sendRedirect(req.getContextPath() + "/login");
-                        }
-                }
                 req.getRequestDispatcher("/view/home.jsp").forward(req, resp);
         }
 }

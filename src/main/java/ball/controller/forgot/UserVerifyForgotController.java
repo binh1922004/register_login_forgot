@@ -29,7 +29,8 @@ public class UserVerifyForgotController extends HttpServlet {
                 String alertMSG = "";
 
                 UserModel userModel = userService.findByUserName(username);
-                if (userModel != null){
+                System.out.println(userModel);
+                if (userModel.getUserName() != null){
                         HttpSession session = req.getSession(true);
                         session.setAttribute("username", username);
                         session.setAttribute("email", userModel.getEmail());
