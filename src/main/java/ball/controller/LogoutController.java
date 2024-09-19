@@ -18,7 +18,6 @@ public class LogoutController extends HttpServlet {
                 Cookie[] cookies = req.getCookies();
                 for (Cookie c: cookies){
                         if (c.getName().equals("username")){
-                                System.out.println("use delete");
                                 c.setMaxAge(0);
                                 resp.addCookie(c);
                                 break;
