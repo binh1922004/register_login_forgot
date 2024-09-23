@@ -26,6 +26,6 @@ public class UserController extends HttpServlet {
 //                        }
 //                        break;
 //                }
-                req.getRequestDispatcher("/view/home.jsp").forward(req, resp);
+                req.getRequestDispatcher("/view/web/home.jsp").forward(req, resp);
         }
 }

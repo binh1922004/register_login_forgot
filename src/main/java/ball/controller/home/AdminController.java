@@ -10,7 +10,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 //@SuppressWarnings("serial")
-@WebServlet("/home/admin")
+@WebServlet("/admin/home")
 public class AdminController extends HttpServlet {
         @Override
         protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

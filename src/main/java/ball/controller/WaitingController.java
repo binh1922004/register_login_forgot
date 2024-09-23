@@ -24,7 +24,7 @@ public class WaitingController extends HttpServlet {
                         session.setAttribute("username", u.getUserName());
                         session.setAttribute("roleid", roleDao.findRoleNameById(u.getRoleid()));
                         if(u.getRoleid()==1) {
-                                resp.sendRedirect(req.getContextPath()+"/home/admin");
+                                resp.sendRedirect(req.getContextPath()+"/admin/home");
                         }
                         else if(u.getRoleid()== 3) {
                                 resp.sendRedirect(req.getContextPath()+"/home/manager");
