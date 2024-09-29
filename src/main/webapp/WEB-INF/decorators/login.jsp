@@ -61,7 +61,6 @@ License: You must have a valid license purchased only from themeforest (the abov
     <link href="${URL}assets/global/plugins/fancybox/source/jquery.fancybox.css" rel="stylesheet">
     <link href="${URL}assets/global/plugins/carousel-owl-carousel/owl-carousel/owl.carousel.css" rel="stylesheet">
     <link href="${URL}assets/global/plugins/slider-layer-slider/css/layerslider.css" rel="stylesheet">
-    <link href="${URL}/assets/global/plugins/uniform/css/uniform.default.css" rel="stylesheet" type="text/css">
     <!-- Page level plugin styles END -->
 
     <!-- Theme styles START -->
@@ -100,23 +99,12 @@ License: You must have a valid license purchased only from themeforest (the abov
 <%@include file="/conmon/web/header.jsp"%>
 <!-- Header END -->
 
-<!-- BEGIN SLIDER -->
-<%@include file="/conmon/web/slider.jsp"%>
-<!-- END SLIDER -->
-
 <div class="main">
     <div class="container">
         <sitemesh:write property="body"/>
     </div>
 </div>
 
-<!-- BEGIN BRANDS -->
-<%@include file="/conmon/web/brand.jsp"%>
-<!-- END BRANDS -->
-
-<!-- BEGIN STEPS -->
-<%@include file="/conmon/web/step.jsp"%>
-<!-- END STEPS -->
 
 <!-- BEGIN FOOTER -->
 <%@include file="/conmon/web/footer.jsp"%>
