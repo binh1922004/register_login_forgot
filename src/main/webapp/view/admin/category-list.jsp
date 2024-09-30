@@ -7,6 +7,7 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ include file="/conmon/taglib.jsp"%>
+<a href="<c:url value="/admin/category/add"/>">Add <category></category></a>
 <table>
     <tr>
         <th>STT</th>

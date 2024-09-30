@@ -41,7 +41,6 @@ public class RegisterController extends HttpServlet {
 
                 Part part = req.getPart("file");
 
-                System.out.println(part == null);
                 String filename = getFileName(part);
                 part.write(uploadPath + filename);
 

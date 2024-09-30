@@ -11,7 +11,7 @@ public class Constant {
         public static final String FORGOT_PATH = "/view/forgot";
         public static final String FORGOT_USER = "/view/forgot/user.jsp";
         public static final String FORGOT_EMAIL = "/view/forgot/email.jsp";
-        public static final String DEFAULT_FILENAME = "C:\\Users\\binh\\HCMUTE\\WEB\\IMG";
+        public static final String DEFAULT_FILENAME = "C:\\Users\\binh\\HCMUTE\\WEB\\IMG\\";
 
         public static final String randomPass(){
                 int leftLimit = 97; // 'a'
