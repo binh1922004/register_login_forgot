@@ -8,9 +8,9 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Title</title>
 </head>
 <body>
+<sitemesh:write property="body"></sitemesh:write>
 
 </body>
 </html>
